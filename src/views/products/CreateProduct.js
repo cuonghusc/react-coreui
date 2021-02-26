@@ -1,23 +1,26 @@
 import React from 'react'
-import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
-
-
-
-const CreateProduct = ({match}) => {
-    return (
-        <CRow>
-            <CCol>
-                <CCard>
-                <CCardHeader>
-                    Add New Product
-                </CCardHeader>
-                <CCardBody>
+import {Link} from 'react-router-dom/cjs/react-router-dom.min';
+export default class CreateProduct extends React.Component {
+    constructor(props) {
+        super(props);
+  
+        this.state = {
+           data: []
+        }
+    };
+    render() {
+        return (
+            <div className="card">
+                <div className="card-header">
+                    Add New Product 
+                    <div className="float-sm-right">
+                        <Link to={"/product"} className="btn btn-sm btn-primary">Back</Link>
+                    </div>
+                </div>
+                <div className="card-body">
                     
-                </CCardBody>
-                </CCard>
-            </CCol>
-        </CRow>
-    )
+                </div>
+            </div>
+        );
+    }
 }
-
-export default CreateProduct

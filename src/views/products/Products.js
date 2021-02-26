@@ -4,25 +4,29 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default class Products extends React.Component {
     constructor(props){
-        super();
+        super(props);
         this.state = {
             products: [],
         } 
     }
-    
-    componentDidMount() {
+    fetchData(){
         axios.get(`http://localhost:8000/api/product`)
-            .then(res => {
-                const products = res.data.data;
-                this.setState({ products });
-            })
+        .then(res => {
+            const products = res.data.data;
+            this.setState({products});
+        })
     }
-    
+    componentDidMount() {
+        this.fetchData()
+    }
     render() {
         return (
             <div className="card">
                 <div className="card-header">
                     Product List
+                    <div className="float-sm-right">
+                        <button className="btn btn-sm btn-success">New</button>
+                    </div>
                 </div>
                 <div className="card-body">
                     <table className="table table-bordered table-hover">
@@ -43,8 +47,8 @@ export default class Products extends React.Component {
                                     <td>{product.price}</td>
                                     <td>{product.quantity}</td>
                                     <td>
-                                        <Link to="/products" className="btn btn-success">Detail</Link>
-                                        <Link to="/products" className="btn btn-warning">Edit</Link>
+                                        <Link to={"/products/"+product.id} className="btn btn-sm btn-success">Detail</Link>
+                                        <Link to="/products" className="btn btn-sm btn-warning">Edit</Link>
                                     </td>
                                 </tr>
                             ))}

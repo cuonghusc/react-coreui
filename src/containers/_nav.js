@@ -19,7 +19,7 @@ const _nav =  [
   {
     _tag:'CSidebarNavDropdown',
     name:'Products',
-    icon:'cil-user',
+    icon:'cil-list',
     _children:[
       {
         _tag:'CSidebarNavItem',
